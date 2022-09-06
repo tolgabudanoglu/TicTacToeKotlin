@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         boardList.add(binding.b3)
         boardList.add(binding.c1)
         boardList.add(binding.c2)
-        boardList.add(binding.c2)
+        boardList.add(binding.c3)
     }
 
     fun boardTapped(view: View) {
