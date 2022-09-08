@@ -1,9 +1,11 @@
 package com.example.tictactoe
 
+import android.icu.text.CaseMap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
 import com.example.tictactoe.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -45,6 +47,58 @@ class MainActivity : AppCompatActivity() {
         if (view !is Button)
             return
         addToBoard(view)
+
+        if(checkForVictory(NOUGHT))
+
+        if(fullBoard()){
+            result("draw")
+            
+        }
+    }
+
+    private fun checkForVictory(s: String): Boolean {
+
+    }
+
+    private fun result(draw: String) {
+
+        AlertDialog.Builder(this)
+            .setTitle(draw)
+            .setPositiveButton("Reset")
+            { _,_ ->
+                resetBoard()
+
+
+            }
+            .setCancelable(false)
+            .show()
+
+    }
+
+    private fun resetBoard() {
+
+        for(button in boardList){
+            button.text = ""
+
+        }
+        if (firstTurn == Turn.NOUGHT)
+            firstTurn = Turn.CROSS
+        else if (firstTurn == Turn.CROSS)
+            firstTurn = Turn.NOUGHT
+
+        currentTurn = firstTurn
+        setTurnLabel()
+
+    }
+
+    private fun fullBoard(): Boolean {
+
+        for (button in boardList){
+            if (button.text == "")
+                return false
+        }
+        return true
+
     }
 
     private fun addToBoard(button: Button) {
