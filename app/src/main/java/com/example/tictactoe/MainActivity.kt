@@ -129,7 +129,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object{
-        const val NOUGHT = "0"
+        const val NOUGHT = "O"
         const val CROSS = "X"
     }
 }
